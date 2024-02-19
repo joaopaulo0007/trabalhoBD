@@ -1,0 +1,98 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Banco de dados João Paulo",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/usuarios/{cpf}": {
+        "get": {
+          "description": "Retorna o usuário pelo CPF informado",
+          "parameters": [
+            {
+                "name": "cpf",
+                "in": "path",
+                "required": true,
+                "description": "CPF do usuário",
+                "schema": {
+                    "type": "integer"
+                }                
+            } 
+          ],
+          "responses": {
+            "200": {
+              "description": "Objeto representando o usuário",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "cpf": {
+                        "type": "integer"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "data_nascimento": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/usuarios": {
+        "post": {
+            "description": "Cria um novo usuário",
+            "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "cpf": {
+                                    "type": "integer"
+                                },
+                                "nome": {
+                                    "type": "string"
+                                },
+                                "data_nascimento": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Usuário criado com sucesso",
+                    "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "cpf": {
+                                "type": "integer"
+                              },
+                              "nome": {
+                                "type": "string"
+                              },
+                              "data_nascimento": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                }
+            }
+        }
+      }
+    }
+  }
+  
